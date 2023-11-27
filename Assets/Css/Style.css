@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Syncopate:wght@400;700&display=swap');
+:root{
+    --header-height:3.6rem;
+    --black-color: hsl(0, 0%, 5%);
+    --black-color-light: hsl(0, 0%, 70%);
+    --white-color: hsl(0, 0%, 100%);
+    --title-color: hsl(0, 0%, 5%);
+    --text-color: hsl(0, 0%, 55%);
+    --body-color: hsl(0, 0%, 96%);
+
+    --body-font:"Poppins", sans-serif;
+    --second-font: "Syncopate", sans-serif;
+    --biggest-font-size:2.5rem;
+    --h2-font-size:1.25rem;
+    --normal-font-size:.938rem;
+    --small-font-size:.813rem;
+
+    --font-regular:10;
+    --font-bold:700;
+
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+@media screen and (min-width: 1152px){
+    :root {
+        --biggest-font-size: 4.5rem;
+        --h2-font-size:1.5rem;
+        --normal-font-size:1rem;
+        --small-font-size: .875rem;
+    }
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    display: block;
+    max-width:100%;
+    height:auto;
+}
+
+.container{
+    max-width:1120px;
+    margin-inline: 1.5rem;
+}
+
+            /* Header and nav */
+.header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--body-color);
+    z-index:var(--z-fixed);
+}
+
+.nav{
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo img{
+    width:4rem;
+}
+.nav__toggle,
+.nav__close{
+    display:flex;
+    font-size: 1.25rem;
+    color:var(--title-color);
+    cursor: pointer;
+}
+
+/* Navigation for mobile device */
+@media screen and (max-width: 850px) {
+    .nav__menu{
+        position: fixed;
+        top:0;
+        right:-100%;
+        background-color: var(--body-color);
+        box-shadow: -1px 0 16px hsla(0, 0%, 0%, .1);
+        width:80%;
+        height: 100%;
+        padding: 6rem 3rem;
+        transition: right 0.1s;
+    }
+ 
+}
+.nav__list{
+    display: flex;
+    flex-direction:column;
+    row-gap:2.5rem;
+}
+.nav__link{
+    color: var(--title-color);
+    font-family: var(--second-font);
+}
+.nav__close{
+    position: absolute;
+    top: 1.125rem;
+    right:1.5rem;
+}
+.show-menu{
+    right: 0;
+}
