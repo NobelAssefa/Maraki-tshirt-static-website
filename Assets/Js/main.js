@@ -33,16 +33,16 @@ navLink.forEach(n => n.addEventListener('click', linkAction))
 let swiperShoes = new Swiper('.home__swiper', {
     loop: true,
     spaceBetween: 32,
-    grabCursor: true,  
+    grabCursor: true,
     effect: 'creative',
-    creativeEffect:{
-        prev:{
-            translate:[-100, 0, -500],
+    creativeEffect: {
+        prev: {
+            translate: [-100, 0, -500],
             opacity: 0,
         },
-        next:{
+        next: {
             translate: [100, 0, -500],
-            opacity:0,
+            opacity: 0,
         }
     },
 
@@ -55,27 +55,81 @@ let swiperShoes = new Swiper('.home__swiper', {
 })
 
 /*=============== CHANGE BACKGROUND HEADER ===============*/
-const shadowHeader = () =>{
+const shadowHeader = () => {
     const header = document.getElementById('header')
     // When the scroll is greater than 50 viewport height, add the shadow-header class to the header tag
-    this.scrollY >= 50 ? header.classList.add('shadow-header') 
-                       : header.classList.remove('shadow-header')
+    this.scrollY >= 50 ? header.classList.add('shadow-header')
+        : header.classList.remove('shadow-header')
 }
 window.addEventListener('scroll', shadowHeader)
 
-/* ================ Swiper Popular=============== */ 
+/* ================ Swiper Popular=============== */
+
 const popularSwiper = new Swiper('.popular__content', {
-    slidesPerView:'auto',
-    centeredSlides:true,
+    slidesPerView: 'auto',
+    centeredSlides: true,
     loop: true,
-    
+
     //Navigation arrows
 
-    navigation:{
+    navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
-   
-    
+
+    breakpoints: {
+        768: {
+            centeredSlides: false,
+        }
+    }
+
+
 
 });
+
+
+/* ===================CHOOSE FAQ=======================*/
+
+
+const faqItems = document.querySelectorAll('.choose__faq-item')
+
+//SELECT EACH ITEM
+
+faqItems.forEach((item) => {
+    const faqHeader = item.querySelector('.choose__faq-header')
+
+    //2. Select each button click
+
+    faqHeader.addEventListener('click', () => {
+        // 7. Select the current faq-open class
+        const openItem = document.querySelector('.faq-open')
+
+        // 5.calling the toogle function
+        toggleItem(item)
+
+        //8. Remove the faq-open class from other items 
+        if( openItem && openItem != item){
+            toggleItem(openItem)
+
+        }
+
+    })
+})
+
+// 3.create fuction to dispaly the content 
+
+const toggleItem = (item) => {
+    const faqContent = item.querySelector('.choose__faq-content')
+    // 6. if the same item contains the faq-open class,remove
+    if (item.classList.contains('faq-open')) {
+        faqContent.removeAttribute('style')
+        item.classList.remove('faq-open')
+    } else {
+        // 4. Add Max-height to the content and add the flag-open class
+        faqContent.style.height = faqContent.scrollHeight + 'px'
+        item.classList.add('faq-open')
+
+    }
+
+
+}
