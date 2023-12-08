@@ -77,11 +77,11 @@ const popularSwiper = new Swiper('.popular__content', {
         prevEl: '.swiper-button-prev',
     },
 
-    breakpoints: {
-        768: {
-            centeredSlides: false,
-        }
-    }
+    // breakpoints: {
+    //     768: {
+    //         centeredSlides: false,
+    //     }
+    // }
 
 
 
@@ -133,3 +133,16 @@ const toggleItem = (item) => {
 
 
 }
+
+/* =======================Scroll Reveal==================== */
+const sr = ScrollReveal({
+    origin: 'top',
+    distance: '60px',
+    duration: 2500,
+    delay: 400,
+    // reset: true // animation repeat
+})
+sr.reveal(`.home__container, .popular__container, .footer__container`)
+sr.reveal(`.home__swiper`, {origin: 'bottom'})
+sr.reveal(`.choose__image`, {origin: 'left'})
+sr.reveal(`.choose__content`, {origin: 'right'})
